@@ -2,7 +2,7 @@ pipeline {
 
   environment {
     dockerimagename = ""
-    dockerImage = ""
+    dockerImage = "natakravchenko/web-app"
   }
 
   agent any
@@ -17,6 +17,25 @@ pipeline {
     stage("Compilation") {
        steps {
            sh "./mvnw clean install -DskipTests"
+       }
+    }
+
+    stage("Build image") {
+       steps {
+           sh "/usr/local/bin/docker build -t ${dockerImage} ."
+       }
+    }
+
+
+    stage("Push image to dockerhub") {
+       steps {
+           sh "/usr/local/bin/docker push ${dockerImage}"
+       }
+    }
+
+    stage("Deploy to k8s") {
+       steps {
+           sh "/opt/homebrew/bin/kubectl apply -f deployment.yml"
        }
     }
   }
