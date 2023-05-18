@@ -17,5 +17,18 @@ jobs:
        with:
           name: my-artifact
           path: ${{ github.workspace }}/Hello.java
+  job2: 
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+     - name: Welcome message
+       run: echo 'Hello from ${{ github.workflow }}'
+     - name: Download artifact from prev job(job1)
+       uses: actions/download-artifact@v3
+       with:
+         name: my-artifact     
+     - name: ls
+       run: ls -a
+    
       
     
