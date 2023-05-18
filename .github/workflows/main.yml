@@ -4,20 +4,18 @@ jobs:
   job1: 
     runs-on: ubuntu-latest
     steps:
-     - name: step1
+     - name: Welcome message
        run: echo 'Hello from ${{ github.workflow }}'
-     - name: step2
+     - name: Java program execution
        run: |
-          echo 'Hello from ${{ github.workflow }}'
-          echo 'My second line'
-  job2: 
-    runs-on: ubuntu-latest
-    steps:
-     - name: step1
-       run: echo 'Hello from ${{ github.workflow }}'
-     - name: step2
-       run: |
-          echo 'Hello from ${{ github.workflow }}'
-          echo 'My second line'        
+          echo 'public class Hello { public static void main(String args[]) { System.out.println("Hello"); } }' >> Hello.java
+          javac Hello.java
+          ls
+          java Hello
+          echo 'By-bye'
+     - uses: actions/upload-artifact@v3
+       with:
+          name: my-artifact
+          path: ${{ github.workspace }}/Hello.java
       
     
