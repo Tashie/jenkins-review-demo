@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: app
-          image: natakravchenko/web-app
+          image: natakravchenko/app
           ports:
             - containerPort: 8080
