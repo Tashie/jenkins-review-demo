@@ -1,0 +1,23 @@
+name: My first workflow
+on: [workflow_dispatch]
+jobs:
+  job1: 
+    runs-on: ubuntu-latest
+    steps:
+     - name: step1
+       run: echo 'Hello from ${{ github.workflow }}'
+     - name: step2
+       run: |
+          echo 'Hello from ${{ github.workflow }}'
+          echo 'My second line'
+  job2: 
+    runs-on: ubuntu-latest
+    steps:
+     - name: step1
+       run: echo 'Hello from ${{ github.workflow }}'
+     - name: step2
+       run: |
+          echo 'Hello from ${{ github.workflow }}'
+          echo 'My second line'        
+      
+    
