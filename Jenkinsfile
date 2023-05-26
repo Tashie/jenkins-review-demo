@@ -26,6 +26,11 @@ pipeline {
        }
     }
 
+    stage("Build image 2") {
+       steps {
+           sh "/usr/local/bin/docker build -t ${dockerImage} ."
+       }
+    }
 
     stage("Push image to dockerhub") {
        steps {
