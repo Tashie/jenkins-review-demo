@@ -39,11 +39,11 @@ pipeline {
     }
 
 
-//     stage("Deploy to k8s") {
-//        steps {
-//            sh "/opt/homebrew/bin/kubectl apply -f deployment.yml"
-//        }
-//     }
+    stage("Deploy to k8s") {
+       steps {
+           sh "/opt/homebrew/bin/kubectl apply -f ./deploy/deployment.yml"
+       }
+    }
 
   }
 }
