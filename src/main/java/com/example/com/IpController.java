@@ -15,7 +15,7 @@ public class IpController {
     public String hello() throws SocketException, UnknownHostException {
         try (final DatagramSocket datagramSocket = new DatagramSocket()) {
             datagramSocket.connect(InetAddress.getByName("8.8.8.8"), 12345);
-            return "v1->" + datagramSocket.getLocalAddress().getHostAddress();
+            return "v165215->" + datagramSocket.getLocalAddress().getHostAddress();
         }
     }
 }
