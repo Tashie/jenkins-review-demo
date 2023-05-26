@@ -2,7 +2,7 @@ pipeline {
 
   environment {
     dockerimagename = ""
-    dockerImage = "natakravchenko/web-app"
+    dockerImage = "natakravchenko/ci-demo"
   }
 
   agent any
@@ -34,11 +34,11 @@ pipeline {
     }
 
 
-    stage("Deploy to k8s") {
-       steps {
-           sh "/opt/homebrew/bin/kubectl apply -f deployment.yml"
-       }
-    }
+//     stage("Deploy to k8s") {
+//        steps {
+//            sh "/opt/homebrew/bin/kubectl apply -f deployment.yml"
+//        }
+//     }
 
   }
 }
